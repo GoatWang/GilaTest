@@ -33,11 +33,6 @@ def prob3(bigram, cnt2=cnt2, cnt3=cnt3):
 p = prob3(('we', 'are'))
 print(p['family'])
 
-def predict_top_beam_size(beam_size, bigram):
-    curent_prob3 = prob3(tuple(bigram))
-    sorted_prob3 = sorted(curent_prob3.items(), key=operator.itemgetter(1), reverse=True)[:beam_size]
-    return [t for t, v in sorted_prob3]
-
 
 def predict_max(starting, cnt2=cnt2, cnt3=cnt3):
     list_of_words = list(starting)
@@ -52,18 +47,24 @@ assert sent[-1] == '.' or len(sent) <= 15
 print(' '.join(sent))
 
 
-def next_predict():
-    
+# def predict_top_beam_size(beam_size, bigram):
+#     curent_prob3 = prob3(tuple(bigram))
+#     sorted_prob3 = sorted(curent_prob3.items(), key=operator.itemgetter(1), reverse=True)[:beam_size]
+#     return [t for t, v in sorted_prob3]
 
-def predict_beam(bigram, beam_size=4, sent_length=10, cnt2=cnt2, cnt3=cnt3):
-    list_of_words = list(bigram)
-    while len(list_of_words) < 15 and list_of_words[-1] != '.':
-        curent_prob3 = prob3(tuple(list_of_words[-2:]))
-        predict_top_beam_size
 
-        list_of_words.append(next_word)
-    return list_of_sentence
+# def next_predict():
 
-for sent in predict_beam(('we', 'are')):
-    assert sent[-1] == '.' or len(sent) <10:
-    print(' '.join(sent))
+
+# def predict_beam(bigram, beam_size=4, sent_length=10, cnt2=cnt2, cnt3=cnt3):
+#     list_of_words = list(bigram)
+#     while len(list_of_words) < 15 and list_of_words[-1] != '.':
+#         curent_prob3 = prob3(tuple(list_of_words[-2:]))
+#         predict_top_beam_size
+
+#         list_of_words.append(next_word)
+#     return list_of_sentence
+
+# for sent in predict_beam(('we', 'are')):
+#     assert sent[-1] == '.' or len(sent) <10:
+#     print(' '.join(sent))
